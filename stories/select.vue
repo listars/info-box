@@ -5,7 +5,7 @@
       v-model="form"
       label-width="80px"
       all-default-span="8"
-      :list="list"
+      :content="content"
       :infoData="obj"
     />
     {{form}}
@@ -16,7 +16,7 @@ export default {
   data() {
     return {
       form: {},
-      list: [
+      content: [
         {label: '布局测试', key: 'test'},
         {
           label: '姓名',

@@ -2,7 +2,7 @@
   <div class="basic">
     <info-box 
         title="信息盒子"
-        :list="list"
+        :content="content"
         :infoData="obj"></info-box>
   </div>
 </template>
@@ -10,7 +10,7 @@
 export default {
   data () {
     return {
-      list: [
+      content: [
         {label: '布局测试', key: 'test'},
         {label: '姓名', key: 'name'},
         {label: '用户账号', key: 'user'},

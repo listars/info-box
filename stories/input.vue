@@ -4,7 +4,7 @@
       title="信息混合表单"
       v-model="form"
       label-width="80px"
-      :list="list"
+      :content="content"
       :infoData="obj"
     />
     {{form}}
@@ -15,7 +15,7 @@ export default {
   data() {
     return {
       form: {},
-      list: [
+      content: [
         {label: '布局测试', key: 'test'},
         {
           label: '姓名',

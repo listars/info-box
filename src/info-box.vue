@@ -8,55 +8,52 @@
       :label-width="labelWidth"
       :model="form"
     >
-      <div 
+      <el-form-item
         :class="`info-col-${item.span || allDefaultSpan}`"
         class="info-col"
         v-for="(item, index) in content" 
         :key="index"
+        :label="`${item.label}:`"
+        :rules="item.rules"
+        :prop="item.key"
       >
-        <el-form-item
-          :label="`${item.label}:`"
-          :rules="item.rules"
-          :prop="item.key"
-        >
-          <!-- input模块 -->
-          <template v-if="item.type === 'input'">
-            <el-input
-              v-model="form[item.key]"
-              v-init="{initFn: item.initFn}"
-              @change="item.onChange && item.onChange($event)"
-              placeholder="请输入"
-            ></el-input>
-          </template>
+        <!-- input模块 -->
+        <template v-if="item.type === 'input'">
+          <el-input
+            v-model="form[item.key]"
+            v-init="{initFn: item.initFn}"
+            @change="item.onChange && item.onChange($event)"
+            placeholder="请输入"
+          ></el-input>
+        </template>
 
-          <!-- select模块 -->
-          <template v-else-if="item.type === 'select'">
-            <el-select 
-              v-model="form[item.key]"
-              v-init="{initFn: item.initFn}"
-              placeholder="请选择" 
-              @change="item.onChange && item.onChange($event)"
-            >
-              <template v-if="item.options">
-                <el-option
-                  v-for="(option, i) in item.options"
-                  :key="i"
-                  :label="option[item.optionsLabelKey || 'label']"
-                  :value="option[item.optionsValueKey || 'value']"
-                />
-              </template>
-            </el-select>
-          </template>
+        <!-- select模块 -->
+        <template v-else-if="item.type === 'select'">
+          <el-select 
+            v-model="form[item.key]"
+            v-init="{initFn: item.initFn}"
+            placeholder="请选择" 
+            @change="item.onChange && item.onChange($event)"
+          >
+            <template v-if="item.options">
+              <el-option
+                v-for="(option, i) in item.options"
+                :key="i"
+                :label="option[item.optionsLabelKey || 'label']"
+                :value="option[item.optionsValueKey || 'value']"
+              />
+            </template>
+          </el-select>
+        </template>
 
-          <!-- 文本模块 -->
-          <template v-else>
-            <span class="info-value" v-init="{initFn: item.initFn}">{{
-              (item.formatter && item.formatter(infoData)) ||
-                infoData[item.key]
-            }}</span>
-          </template>
-        </el-form-item>
-      </div>
+        <!-- 文本模块 -->
+        <template v-else>
+          <span class="info-value" v-init="{initFn: item.initFn}">{{
+            (item.formatter && item.formatter(infoData)) ||
+              infoData[item.key]
+          }}</span>
+        </template>
+      </el-form-item>
       <!--@slot 自定义内容-->
       <slot> </slot>
     </el-form>

@@ -1,12 +1,12 @@
 {
-  "name": "@femessage/info-box",
-  "version": "1.0.0",
+  "name": "el-info-box",
+  "version": "0.0.1",
   "description": "",
-  "author": "https://github.com/FEMessage",
+  "author": "https://github.com/listars",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/FEMessage/info-box.git"
+    "url": "https://github.com/listars/info-box.git"
   },
   "keywords": [
     "vue",
